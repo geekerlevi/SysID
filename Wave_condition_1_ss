@@ -145,7 +145,7 @@ Order:30 -> 54%
 
   % This sets the input delay for each input (also known as the dead time or time delay). The first input has a delay of 0 time steps, while the second input has a delay of 1 time step. 
   % This means the first input affects the output immediately, while the second input's effect on the output is delayed by one time step.                        
-  nk = [0 1];
+  nk = [0 3];
 
   % This line calls the arx function to estimate the ARX model parameters from the given data. 
   % The function takes the data set data, which contains the time-series data of inputs and output, and the model orders [na,nb,nk], applying the options Opt. 
