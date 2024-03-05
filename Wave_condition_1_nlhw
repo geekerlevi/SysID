@@ -34,7 +34,7 @@ initialModel = idnlhw([nb nf nk],inputNL,outputNL);
  nlhw1 = nlhw(data, initialModel, Options);
  compare(data, nlhw1)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:6 -> 59.64%
+Order:6 -> 59.64% CUT OFF
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 % Details about Estimation Data                    
  % Import   data                                   
@@ -101,6 +101,78 @@ initialModel = idnlhw([nb nf nk],inputNL,outputNL);
                                                    
 % Estimate Hammerstein-Wiener Model                
  nlhw1 = nlhw(data, initialModel, Options);   
+ compare(data, nlhw1)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Order:18 -> 81.85%
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+% Details about Estimation Data                    
+ % Import   data                                   
+                                                   
+% Estimation of Hammerstein-Wiener model           
+                                                   
+% Define orders of linear block                    
+nb = [8 8];                                        
+nf = [7 7];                                        
+nk = [0 4];                                        
+                                                   
+% Create Input Nonlinearity                        
+nl1 = idPiecewiseLinear;                           
+                                                   
+nl2 = idPiecewiseLinear;                           
+                                                   
+inputNL = [nl1; nl2];                              
+                                                   
+% Create Output Nonlinearity                       
+nl1 = idPiecewiseLinear;                           
+                                                   
+outputNL = [nl1];                                  
+                                                   
+% Create a template IDNLHW model                   
+initialModel = idnlhw([nb nf nk],inputNL,outputNL);
+                                                   
+ Options = nlhwOptions;                            
+                                                   
+ Options.Display = 'on';                           
+                                                   
+% Estimate Hammerstein-Wiener Model                
+ nlhw1 = nlhw(data, initialModel, Options);   
+ compare(data, nlhw1)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Order:24 -> 78.06%
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+% Details about Estimation Data                    
+ % Import   data                                   
+                                                   
+% Estimation of Hammerstein-Wiener model           
+                                                   
+% Define orders of linear block                    
+nb = [7 11];                                        
+nf = [10 10];                                        
+nk = [0 4];                                        
+                                                   
+% Create Input Nonlinearity                        
+nl1 = idPiecewiseLinear;                           
+                                                   
+nl2 = idPiecewiseLinear;                           
+                                                   
+inputNL = [nl1; nl2];                              
+                                                   
+% Create Output Nonlinearity                       
+nl1 = idPiecewiseLinear;                           
+                                                   
+outputNL = [nl1];                                  
+                                                   
+% Create a template IDNLHW model                   
+initialModel = idnlhw([nb nf nk],inputNL,outputNL);
+                                                   
+ Options = nlhwOptions;                            
+                                                   
+ Options.Display = 'on';                           
+                                                   
+% Estimate Hammerstein-Wiener Model                
+ nlhw1 = nlhw(data, initialModel, Options);   
+ compare(data, nlhw1)
+
 
 
 
