@@ -1,1 +1,96 @@
-
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Order:4 -> 82.13%
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+% Details about Estimation Data                                    
+ % Import   data                                                   
+                                                                   
+% State space model estimation                                     
+ Options = n4sidOptions;                                           
+ Options.Display = 'on';                                           
+ Options.Focus = 'simulation';                                     
+ Options.N4Weight = 'SSARX';                                       
+                                                                   
+ ss5 = n4sid(data, 4, 'Form', 'free', 'InputDelay', [0 4], Options)
+                                                                  
+% Compare
+ compare(data,ss5)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Order:6 -> 85.68%
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+% Details about Estimation Data                                    
+ % Import   data                                                   
+                                                                   
+% State space model estimation                                     
+ Options = n4sidOptions;                                           
+ Options.Display = 'on';                                           
+ Options.Focus = 'simulation';                                     
+ Options.N4Weight = 'SSARX';                                       
+                                                                   
+ ss5 = n4sid(data, 6, 'Form', 'free', 'InputDelay', [0 4], Options)
+                                                                  
+% Compare
+ compare(data,ss5)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Order:12 -> 85.65%
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+% Details about Estimation Data                                    
+ % Import   data                                                   
+                                                                   
+% State space model estimation                                     
+ Options = n4sidOptions;                                           
+ Options.Display = 'on';                                           
+ Options.Focus = 'simulation';                                     
+ Options.N4Weight = 'SSARX';                                       
+                                                                   
+ ss5 = n4sid(data, 12, 'Form', 'free', 'InputDelay', [0 4], Options)
+                                                                  
+% Compare
+ compare(data,ss5)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Order:18 -> 85.9%
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+% Details about Estimation Data                                    
+ % Import   data                                                   
+                                                                   
+% State space model estimation                                     
+ Options = n4sidOptions;                                           
+ Options.Display = 'on';                                           
+ Options.Focus = 'simulation';                                     
+ Options.N4Weight = 'SSARX';                                       
+                                                                   
+ ss5 = n4sid(data, 18, 'Form', 'free', 'InputDelay', [0 4], Options)
+                                                                  
+% Compare
+ compare(data,ss5)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Order:24 -> 86.05%
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+% Details about Estimation Data                                    
+ % Import   data                                                   
+                                                                   
+% State space model estimation                                     
+ Options = n4sidOptions;                                           
+ Options.Display = 'on';                                           
+ Options.Focus = 'simulation';                                     
+ Options.N4Weight = 'SSARX';                                       
+                                                                   
+ ss5 = n4sid(data, 24, 'Form', 'free', 'InputDelay', [0 4], Options)
+                                                                  
+% Compare
+ compare(data,ss5)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Order:30 -> BAD RESULT
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+% Details about Estimation Data                                    
+ % Import   data                                                   
+                                                                   
+% State space model estimation                                     
+ Options = n4sidOptions;                                           
+ Options.Display = 'on';                                           
+ Options.Focus = 'simulation';                                     
+ Options.N4Weight = 'SSARX';                                       
+                                                                   
+ ss5 = n4sid(data, 30, 'Form', 'free', 'InputDelay', [0 20], Options)
+                                                                  
+% Compare
+ compare(data,ss5)
