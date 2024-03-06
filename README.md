@@ -23,3 +23,9 @@ Order:
 -> 24
 
 -> 30
+
+[Put discrete-time data in a timetable]
+
+TT = timetable(Torque, Wave_m1p2, Velo,'SampleRate',50);
+
+data=iddata(TT,'OutputName',{'Velo'},'InputName',{'Torque','Wave_m1p2'});
