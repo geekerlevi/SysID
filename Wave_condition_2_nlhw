@@ -147,7 +147,7 @@ Order:24 -> 76.91%
 % Estimation of Hammerstein-Wiener model           
                                                    
 % Define orders of linear block                    
-nb = [7 11];                                        
+nb = [8 11];                                        
 nf = [10 10];                                        
 nk = [0 4];                                        
                                                    
