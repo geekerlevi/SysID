@@ -113,7 +113,7 @@ Order:18 -> 66.48%
                                                    
 % Define orders of linear block                    
 nb = [8 8];                                        
-nf = [7 7];                                        
+nf = [5 7];                                        
 nk = [0 4];                                        
                                                    
 % Create Input Nonlinearity                        
