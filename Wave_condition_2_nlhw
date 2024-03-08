@@ -182,9 +182,9 @@ Order:30 -> 60.2%
 % Estimation of Hammerstein-Wiener model           
                                                    
 % Define orders of linear block                    
-nb = [14 14];                                        
-nf = [13 13];                                        
-nk = [0 4];                                        
+nb = [8 15];                                        
+nf = [10 14];                                        
+nk = [0 6];                                        
                                                    
 % Create Input Nonlinearity                        
 nl1 = idPiecewiseLinear;                           
