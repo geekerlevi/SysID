@@ -139,7 +139,7 @@ initialModel = idnlhw([nb nf nk],inputNL,outputNL);
  nlhw1 = nlhw(data, initialModel, Options);   
  compare(data, nlhw1)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:24 -> 76.91%
+Order:24 -> 82.29%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 % Details about Estimation Data                    
  % Import   data                                   
@@ -147,8 +147,8 @@ Order:24 -> 76.91%
 % Estimation of Hammerstein-Wiener model           
                                                    
 % Define orders of linear block                    
-nb = [8 11];                                        
-nf = [10 10];                                        
+nb = [10 12];                                        
+nf = [3 11];                                        
 nk = [0 4];                                        
                                                    
 % Create Input Nonlinearity                        
