@@ -404,7 +404,7 @@ Order:24 -> 72.12%
   % Compare
   compare(data,tf26)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:30 -> 71.76%
+Order:30 -> 72.61%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   % Details about Estimation Data                             
   % Import   data                                            
@@ -426,7 +426,7 @@ Order:30 -> 71.76%
 
   % This specifies the orders of the denominator polynomial for a MIMO (Multiple-Input Multiple-Output) system. 
   % Each '3' in the array indicates that the denominator for each input-output pair is a second-order polynomial.                                                           
-  np = [15 15];
+  np = [14 15];
 
   % This specifies the orders of the numerator polynomial for the MIMO system. 
   % Each '3' indicates that the numerator for each input-output pair is a third-order polynomial.                                                
