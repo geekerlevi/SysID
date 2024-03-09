@@ -4,7 +4,7 @@ A comparison between sysID models:
 
 2: State-space model
 
-3: ARX
+3: ARX :   Opt.Focus = 'simulation';
 
 4: Hammerstein Wiener Model
 
