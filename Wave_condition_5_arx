@@ -1,5 +1,5 @@
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:4 -> 31.77%
+Order:4 -> 39.59%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   % Import    data
 
@@ -12,7 +12,7 @@ Order:4 -> 31.77%
   na = 4;
 
   % This sets the order of the exogenous input part of the model, B, for each input. In this case, it indicates that the model should use 10 past values from each of the two inputs.                             
-  nb = [1 4];
+  nb = [2 4];
 
   % This sets the input delay for each input (also known as the dead time or time delay). The first input has a delay of 0 time steps, while the second input has a delay of 1 time step. 
   % This means the first input affects the output immediately, while the second input's effect on the output is delayed by one time step.                        
