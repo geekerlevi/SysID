@@ -1,11 +1,12 @@
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:4 -> 50.32%
+Order:4 -> 49.39%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   % Import    data
 
   % This command creates a set of options for the ARX model estimation. 
   % The variable Opt is used to store these options, which can be customized to control various aspects of the estimation process.                       
-  Opt = arxOptions;       
+  Opt = arxOptions; 
+  Opt.Focus = 'simulation';
 
   % This sets the order of the autoregressive part of the model, A, which represents the number of past output values to be used in the model.             
   na = 4;
@@ -25,13 +26,14 @@ Order:4 -> 50.32%
   % Compare
   compare(data,arx10100)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:6 -> 54.85%
+Order:6 -> 57.71%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   % Import    data
 
   % This command creates a set of options for the ARX model estimation. 
   % The variable Opt is used to store these options, which can be customized to control various aspects of the estimation process.                       
-  Opt = arxOptions;       
+  Opt = arxOptions; 
+  Opt.Focus = 'simulation';
 
   % This sets the order of the autoregressive part of the model, A, which represents the number of past output values to be used in the model.             
   na = 6;
@@ -51,13 +53,14 @@ Order:6 -> 54.85%
   % Compare
   compare(data,arx10100)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:12 -> 54.98%
+Order:12 -> 59.32%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   % Import    data
 
   % This command creates a set of options for the ARX model estimation. 
   % The variable Opt is used to store these options, which can be customized to control various aspects of the estimation process.                       
-  Opt = arxOptions;       
+  Opt = arxOptions;  
+  Opt.Focus = 'simulation';
 
   % This sets the order of the autoregressive part of the model, A, which represents the number of past output values to be used in the model.             
   na = 12;
@@ -77,13 +80,14 @@ Order:12 -> 54.98%
   % Compare
   compare(data,arx10100)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:18 -> 52.75%
+Order:18 -> 58.79%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   % Import    data
 
   % This command creates a set of options for the ARX model estimation. 
   % The variable Opt is used to store these options, which can be customized to control various aspects of the estimation process.                       
-  Opt = arxOptions;       
+  Opt = arxOptions;  
+  Opt.Focus = 'simulation';
 
   % This sets the order of the autoregressive part of the model, A, which represents the number of past output values to be used in the model.             
   na = 18;
@@ -103,13 +107,14 @@ Order:18 -> 52.75%
   % Compare
   compare(data,arx10100)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:24 -> 53.47%
+Order:24 -> 58.73%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   % Import    data
 
   % This command creates a set of options for the ARX model estimation. 
   % The variable Opt is used to store these options, which can be customized to control various aspects of the estimation process.                       
-  Opt = arxOptions;       
+  Opt = arxOptions; 
+  Opt.Focus = 'simulation';
 
   % This sets the order of the autoregressive part of the model, A, which represents the number of past output values to be used in the model.             
   na = 24;
@@ -129,13 +134,14 @@ Order:24 -> 53.47%
   % Compare
   compare(data,arx10100)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:30 -> 54%
+Order:30 -> 56.05%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   % Import    data
 
   % This command creates a set of options for the ARX model estimation. 
   % The variable Opt is used to store these options, which can be customized to control various aspects of the estimation process.                       
-  Opt = arxOptions;       
+  Opt = arxOptions; 
+  Opt.Focus = 'simulation';
 
   % This sets the order of the autoregressive part of the model, A, which represents the number of past output values to be used in the model.             
   na = 30;
