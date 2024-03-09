@@ -80,7 +80,7 @@ Order:12 -> 47.91%
   % Compare
   compare(data,arx10100)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:18 -> 55.64%
+Order:18 -> 68.49%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   % Import    data
 
@@ -93,7 +93,7 @@ Order:18 -> 55.64%
   na = 18;
 
   % This sets the order of the exogenous input part of the model, B, for each input. In this case, it indicates that the model should use 10 past values from each of the two inputs.                             
-  nb = [1 18];
+  nb = [2 18];
 
   % This sets the input delay for each input (also known as the dead time or time delay). The first input has a delay of 0 time steps, while the second input has a delay of 1 time step. 
   % This means the first input affects the output immediately, while the second input's effect on the output is delayed by one time step.                        
