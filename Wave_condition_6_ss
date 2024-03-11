@@ -79,7 +79,7 @@ Order:24 -> 86.05%
 % Compare
  compare(data,ss5)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:30 -> BAD RESULT
+Order:30 -> 86.19%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 % Details about Estimation Data                                    
  % Import   data                                                   
@@ -90,7 +90,7 @@ Order:30 -> BAD RESULT
  Options.Focus = 'simulation';                                     
  Options.N4Weight = 'SSARX';                                       
                                                                    
- ss5 = n4sid(data, 30, 'Form', 'free', 'InputDelay', [0 20], Options)
+ ss5 = n4sid(data, 30, 'Form', 'free', 'InputDelay', [0 3], Options)
                                                                   
 % Compare
  compare(data,ss5)
