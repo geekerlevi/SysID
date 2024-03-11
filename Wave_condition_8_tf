@@ -242,7 +242,7 @@ Order:12 -> 66.88%
   % Compare
   compare(data,tf26)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:18 -> 66.87%
+Order:18 -> 67.29%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   % Details about Estimation Data                             
   % Import   data                                            
@@ -268,7 +268,7 @@ Order:18 -> 66.87%
 
   % This specifies the orders of the numerator polynomial for the MIMO system. 
   % Each '3' indicates that the numerator for each input-output pair is a third-order polynomial.                                                
-  nz = [9 9]; 
+  nz = [4 9]; 
 
   % This uses the arrayfun function to create cell arrays for the numerator coefficients. NaN values are used to initialize the coefficients, which tfest will estimate. 
   % The nz+1 is because the order of the numerator polynomial is one degree higher than the number of coefficients (e.g., a third-order polynomial has four coefficients).                                               
@@ -280,7 +280,7 @@ Order:18 -> 66.87%
   % Prepare input/output delay
 
   % This line sets the initial values of the input/output delays for two inputs. The first input has a delay of 0 seconds, and the second input has a delay of 1 second.                               
-  iodValue = [0 3];
+  iodValue = [0 2];
 
   % This line indicates whether each delay is a free parameter to be estimated. 
   % The first input is set to false, meaning that the delays are fixed and not to be estimated during the identification process.
