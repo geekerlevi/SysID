@@ -25,7 +25,7 @@ Order:4 -> 53.36%
   % Compare
   compare(data,arx10100)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:6 -> 52.79%
+Order:6 -> 53.88%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   % Import    data
 
@@ -34,7 +34,7 @@ Order:6 -> 52.79%
   Opt = arxOptions;       
 
   % This sets the order of the autoregressive part of the model, A, which represents the number of past output values to be used in the model.             
-  na = 6;
+  na = 5;
 
   % This sets the order of the exogenous input part of the model, B, for each input. In this case, it indicates that the model should use 10 past values from each of the two inputs.                             
   nb = [1 6];
