@@ -42,7 +42,7 @@ Order:12 -> 85.65%
  Options.Focus = 'simulation';                                     
  Options.N4Weight = 'SSARX';                                       
                                                                    
- ss5 = n4sid(data, 12, 'Form', 'free', 'InputDelay', [0 4], Options)
+ ss5 = n4sid(data, 12, 'Form', 'free', 'InputDelay', [0 3], Options)
                                                                   
 % Compare
  compare(data,ss5)
