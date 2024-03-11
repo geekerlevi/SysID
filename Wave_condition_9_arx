@@ -1,5 +1,5 @@
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:4 -> 49.96%
+Order:4 -> 47.72%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   % Import    data
 
@@ -26,7 +26,7 @@ Order:4 -> 49.96%
   % Compare
   compare(data,arx10100)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:6 -> 47.04%
+Order:6 -> 50.42%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   % Import    data
 
@@ -35,7 +35,7 @@ Order:6 -> 47.04%
   Opt = arxOptions;       
 
   % This sets the order of the autoregressive part of the model, A, which represents the number of past output values to be used in the model.             
-  na = 6;
+  na = 4;
 
   % This sets the order of the exogenous input part of the model, B, for each input. In this case, it indicates that the model should use 10 past values from each of the two inputs.                             
   nb = [1 6];
@@ -52,7 +52,7 @@ Order:6 -> 47.04%
   % Compare
   compare(data,arx10100)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:12 -> 60.79%
+Order:12 -> 56.00%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   % Import    data
 
@@ -62,7 +62,7 @@ Order:12 -> 60.79%
   Opt.Focus = 'simulation';
 
   % This sets the order of the autoregressive part of the model, A, which represents the number of past output values to be used in the model.             
-  na = 12;
+  na = 10;
 
   % This sets the order of the exogenous input part of the model, B, for each input. In this case, it indicates that the model should use 10 past values from each of the two inputs.                             
   nb = [1 12];
@@ -79,7 +79,7 @@ Order:12 -> 60.79%
   % Compare
   compare(data,arx10100)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:18 -> 67.97%
+Order:18 -> 56.92%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   % Import    data
 
@@ -89,10 +89,10 @@ Order:18 -> 67.97%
   Opt.Focus = 'simulation';
 
   % This sets the order of the autoregressive part of the model, A, which represents the number of past output values to be used in the model.             
-  na = 18;
+  na = 16;
 
   % This sets the order of the exogenous input part of the model, B, for each input. In this case, it indicates that the model should use 10 past values from each of the two inputs.                             
-  nb = [1 18];
+  nb = [2 18];
 
   % This sets the input delay for each input (also known as the dead time or time delay). The first input has a delay of 0 time steps, while the second input has a delay of 1 time step. 
   % This means the first input affects the output immediately, while the second input's effect on the output is delayed by one time step.                        
@@ -106,7 +106,7 @@ Order:18 -> 67.97%
   % Compare
   compare(data,arx10100)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:24 -> 68.09%
+Order:24 -> 58.26%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   % Import    data
 
@@ -116,7 +116,7 @@ Order:24 -> 68.09%
   Opt.Focus = 'simulation';
 
   % This sets the order of the autoregressive part of the model, A, which represents the number of past output values to be used in the model.             
-  na = 24;
+  na = 20;
 
   % This sets the order of the exogenous input part of the model, B, for each input. In this case, it indicates that the model should use 10 past values from each of the two inputs.                             
   nb = [1 24];
@@ -133,7 +133,7 @@ Order:24 -> 68.09%
   % Compare
   compare(data,arx10100)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:30 -> 67.94%
+Order:30 -> 60.86%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   % Import    data
 
@@ -143,14 +143,14 @@ Order:30 -> 67.94%
   Opt.Focus = 'simulation';
 
   % This sets the order of the autoregressive part of the model, A, which represents the number of past output values to be used in the model.             
-  na = 30;
+  na = 24;
 
   % This sets the order of the exogenous input part of the model, B, for each input. In this case, it indicates that the model should use 10 past values from each of the two inputs.                             
-  nb = [1 30];
+  nb = [2 30];
 
   % This sets the input delay for each input (also known as the dead time or time delay). The first input has a delay of 0 time steps, while the second input has a delay of 1 time step. 
   % This means the first input affects the output immediately, while the second input's effect on the output is delayed by one time step.                        
-  nk = [0 3];
+  nk = [0 1];
 
   % This line calls the arx function to estimate the ARX model parameters from the given data. 
   % The function takes the data set data, which contains the time-series data of inputs and output, and the model orders [na,nb,nk], applying the options Opt. 
