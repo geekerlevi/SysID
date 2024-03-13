@@ -323,7 +323,7 @@ Order:18 -> 66.64%
   % Compare
   compare(data,tf26)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:24 -> BAD RESULT
+Order:24 -> 68.10%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   % Details about Estimation Data                             
   % Import   data                                            
@@ -345,7 +345,7 @@ Order:24 -> BAD RESULT
 
   % This specifies the orders of the denominator polynomial for a MIMO (Multiple-Input Multiple-Output) system. 
   % Each '3' in the array indicates that the denominator for each input-output pair is a second-order polynomial.                                                           
-  np = [12 12];
+  np = [11 12];
 
   % This specifies the orders of the numerator polynomial for the MIMO system. 
   % Each '3' indicates that the numerator for each input-output pair is a third-order polynomial.                                                
@@ -404,7 +404,7 @@ Order:24 -> BAD RESULT
   % Compare
   compare(data,tf26)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:30 -> 66.83%
+Order:30 -> 70.72%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   % Details about Estimation Data                             
   % Import   data                                            
@@ -426,11 +426,11 @@ Order:30 -> 66.83%
 
   % This specifies the orders of the denominator polynomial for a MIMO (Multiple-Input Multiple-Output) system. 
   % Each '3' in the array indicates that the denominator for each input-output pair is a second-order polynomial.                                                           
-  np = [15 15];
+  np = [12 13];
 
   % This specifies the orders of the numerator polynomial for the MIMO system. 
   % Each '3' indicates that the numerator for each input-output pair is a third-order polynomial.                                                
-  nz = [15 15]; 
+  nz = [14 16]; 
 
   % This uses the arrayfun function to create cell arrays for the numerator coefficients. NaN values are used to initialize the coefficients, which tfest will estimate. 
   % The nz+1 is because the order of the numerator polynomial is one degree higher than the number of coefficients (e.g., a third-order polynomial has four coefficients).                                               
