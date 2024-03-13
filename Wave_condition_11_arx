@@ -80,7 +80,7 @@ Order:12 -> 57.86%
   % Compare
   compare(data,arx10100)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:18 -> 57.33%
+Order:18 -> 58.72%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   % Import    data
 
@@ -90,7 +90,7 @@ Order:18 -> 57.33%
   Opt.Focus = 'simulation';
 
   % This sets the order of the autoregressive part of the model, A, which represents the number of past output values to be used in the model.             
-  na = 18;
+  na = 14;
 
   % This sets the order of the exogenous input part of the model, B, for each input. In this case, it indicates that the model should use 10 past values from each of the two inputs.                             
   nb = [1 18];
@@ -107,7 +107,7 @@ Order:18 -> 57.33%
   % Compare
   compare(data,arx10100)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:24 -> 58.24%
+Order:24 -> 59.82%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   % Import    data
 
@@ -117,7 +117,7 @@ Order:24 -> 58.24%
   Opt.Focus = 'simulation';
 
   % This sets the order of the autoregressive part of the model, A, which represents the number of past output values to be used in the model.             
-  na = 24;
+  na = 20;
 
   % This sets the order of the exogenous input part of the model, B, for each input. In this case, it indicates that the model should use 10 past values from each of the two inputs.                             
   nb = [1 24];
@@ -134,7 +134,7 @@ Order:24 -> 58.24%
   % Compare
   compare(data,arx10100)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:30 -> 56.07%
+Order:30 -> 64.76%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   % Import    data
 
@@ -144,7 +144,7 @@ Order:30 -> 56.07%
   Opt.Focus = 'simulation';
 
   % This sets the order of the autoregressive part of the model, A, which represents the number of past output values to be used in the model.             
-  na = 30;
+  na = 20;
 
   % This sets the order of the exogenous input part of the model, B, for each input. In this case, it indicates that the model should use 10 past values from each of the two inputs.                             
   nb = [1 30];
