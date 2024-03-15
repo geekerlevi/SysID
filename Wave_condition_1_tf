@@ -20,11 +20,11 @@ Order:4 -> 64.46%
   Options.SearchOptions.MaxIterations = 100;                 
 
   % This specifies the orders of the denominator polynomial for a MIMO (Multiple-Input Multiple-Output) system. 
-  % Each '3' in the array indicates that the denominator for each input-output pair is a second-order polynomial.                                                           
+  % Each '2' in the array indicates that the denominator for each input-output pair is a second-order polynomial.                                                           
   np = [2 2];
 
   % This specifies the orders of the numerator polynomial for the MIMO system. 
-  % Each '3' indicates that the numerator for each input-output pair is a third-order polynomial.                                                
+  % Each '2' indicates that the numerator for each input-output pair is a third-order polynomial.                                                
   nz = [2 2]; 
 
   % This uses the arrayfun function to create cell arrays for the numerator coefficients. NaN values are used to initialize the coefficients, which tfest will estimate. 
