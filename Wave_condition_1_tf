@@ -1,14 +1,15 @@
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:4 -> 64.46%
+Order:4 -> 64.32%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   % Details about Estimation Data                             
   % Import   data  
 
-  % 70% for estimation
-  d_estimate=data(1:23065);
+ % 2/3 for estimation
+ de=data(1:22000);
 
-  % 30% for validation
-  d_validation=data(23066:32950);
+ % 1/3 for validation
+ dv=data(22000:32950);
+
 
   % Transfer function estimation
   % This creates a set of options for the tfest function.
@@ -81,16 +82,16 @@ Order:4 -> 64.46%
   end                                                        
                                                               
   % Perform estimation using "sysinit" as template           
-  tf26 = tfest(d_estimate, sysinit, Options)
+  tf26 = tfest(de, sysinit, Options)
 
   % Compare
- compare(d_estimate,tf26)
- compare(d_validation,tf26)
+ compare(de,tf26)
+ compare(dv,tf26)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:6 -> 67.67%
+Order:6 -> 68.93%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  d_estimate=data(1:23065);
-  d_validation=data(23066:32950);
+  de=data(1:22000);
+  dv=data(22000:32950);
 
   Options = tfestOptions;
   Options.Display = 'on';  
@@ -117,16 +118,16 @@ Order:6 -> 67.67%
       iod_j.Minimum = iodMin(j);
       sysinit.Structure(j).ioDelay = iod_j;                   
   end                                                        
-  tf26 = tfest(d_estimate, sysinit, Options)
+  tf26 = tfest(de, sysinit, Options)
 
-  compare(d_estimate,tf26)
-  compare(d_validation,tf26)
+  compare(de,tf26)
+  compare(dv,tf26)
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Order:12 -> 69.45%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  d_estimate=data(1:23065);
-  d_validation=data(23066:32950);
+  de=data(1:22000);
+  dv=data(22000:32950);
 
   Options = tfestOptions;
   Options.Display = 'on';  
@@ -153,16 +154,16 @@ Order:12 -> 69.45%
       iod_j.Minimum = iodMin(j);
       sysinit.Structure(j).ioDelay = iod_j;                   
   end                                                        
-  tf26 = tfest(d_estimate, sysinit, Options)
+  tf26 = tfest(de, sysinit, Options)
 
-  compare(d_estimate,tf26)
-  compare(d_validation,tf26)
+  compare(de,tf26)
+  compare(dv,tf26)
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Order:18 -> 69.73%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  d_estimate=data(1:23065);
-  d_validation=data(23066:32950);
+  de=data(1:22000);
+  dv=data(22000:32950);
 
   Options = tfestOptions;
   Options.Display = 'on';  
@@ -189,15 +190,15 @@ Order:18 -> 69.73%
       iod_j.Minimum = iodMin(j);
       sysinit.Structure(j).ioDelay = iod_j;                   
   end                                                        
-  tf26 = tfest(d_estimate, sysinit, Options)
+  tf26 = tfest(de, sysinit, Options)
 
-  compare(d_estimate,tf26)
-  compare(d_validation,tf26)
+  compare(de,tf26)
+  compare(dv,tf26)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Order:24 -> 69.8%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  d_estimate=data(1:23065);
-  d_validation=data(23066:32950);
+  de=data(1:22000);
+  dv=data(22000:32950);
 
   Options = tfestOptions;
   Options.Display = 'on';  
@@ -224,23 +225,23 @@ Order:24 -> 69.8%
       iod_j.Minimum = iodMin(j);
       sysinit.Structure(j).ioDelay = iod_j;                   
   end                                                        
-  tf26 = tfest(d_estimate, sysinit, Options)
+  tf26 = tfest(de, sysinit, Options)
 
-  compare(d_estimate,tf26)
-  compare(d_validation,tf26)
+  compare(de,tf26)
+  compare(dv,tf26)
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Order:30 -> 69.97%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  d_estimate=data(1:23065);
-  d_validation=data(23066:32950);
+  de=data(1:22000);
+  dv=data(22000:32950);
 
   Options = tfestOptions;
   Options.Display = 'on';  
   Options.EnforceStability = true;
   Options.SearchOptions.MaxIterations = 100;                 
-  np = [15 15];
-  nz = [15 15]; 
+  np = [12 13];
+  nz = [14 16]; 
   num = arrayfun(@(x)NaN(1,x), nz+1,'UniformOutput',false); 
   den = arrayfun(@(x)[1, NaN(1,x)],np,'UniformOutput',false);
   iodValue = [0 3];
@@ -260,7 +261,7 @@ Order:30 -> 69.97%
       iod_j.Minimum = iodMin(j);
       sysinit.Structure(j).ioDelay = iod_j;                   
   end                                                        
-  tf26 = tfest(d_estimate, sysinit, Options)
+  tf26 = tfest(de, sysinit, Options)
 
-  compare(d_estimate,tf26)
-  compare(d_validation,tf26)
+  compare(de,tf26)
+  compare(dv,tf26)
