@@ -1,15 +1,14 @@
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:4 -> 64.84%
+Order:4 -> 66.22%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 % Details about Estimation Data                                    
 % Import   data                                                   
 
- % 70% for estimation
- d_estimate=data(1:23065);
+ % 2/3 for estimation
+ de=data(1:22000);
 
- % 30% for validation
- d_validation=data(23066:32950);
-
+ % 1/3 for validation
+ dv=data(22000:32950);
 
 % State space model estimation                                     
  Options = n4sidOptions;                                           
@@ -17,69 +16,69 @@ Order:4 -> 64.84%
  Options.Focus = 'simulation';                                     
  Options.N4Weight = 'SSARX';                                       
                                                                    
- ss5 = n4sid(d_estimate, 4, 'Form', 'free', 'InputDelay', [0 4], Options)
+ ss5 = n4sid(de, 4, 'Form', 'free', 'InputDelay', [0 4], Options)
                                                                   
 % Compare
- compare(d_estimate,ss5)
- compare(d_validation,ss5)
+ compare(de,ss5)
+ compare(dv,ss5)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:6 -> 65.95%
+Order:6 -> 67.04%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- d_estimate=data(1:23065);
- d_validation=data(23066:32950);
+ de=data(1:22000);
+ dv=data(22000:32950);
 
  Options = n4sidOptions;                                           
  Options.Display = 'on';                                           
  Options.Focus = 'simulation';                                     
  Options.N4Weight = 'SSARX';                                                                                                         
- ss5 = n4sid(d_estimate, 6, 'Form', 'free', 'InputDelay', [0 4], Options)
- compare(d_estimate,ss5)
- compare(d_validation,ss5)
+ ss5 = n4sid(de, 6, 'Form', 'free', 'InputDelay', [0 4], Options)
+ compare(de,ss5)
+ compare(dv,ss5)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:12 -> 68.91%
+Order:12 -> 67.72%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- d_estimate=data(1:23065);
- d_validation=data(23066:32950);
+ de=data(1:22000);
+ dv=data(22000:32950);
  Options = n4sidOptions;                                           
  Options.Display = 'on';                                           
  Options.Focus = 'simulation';                                     
  Options.N4Weight = 'SSARX';                                                                                                         
- ss5 = n4sid(d_estimate, 12, 'Form', 'free', 'InputDelay', [0 4], Options)
- compare(d_estimate,ss5)
- compare(d_validation,ss5)
+ ss5 = n4sid(de, 12, 'Form', 'free', 'InputDelay', [0 4], Options)
+ compare(de,ss5)
+ compare(dv,ss5)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:18 -> 69.34%
+Order:18 -> 68.85%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                   
- d_estimate=data(1:23065);
- d_validation=data(23066:32950);
+ de=data(1:22000);
+ dv=data(22000:32950);
  Options = n4sidOptions;                                           
  Options.Display = 'on';                                           
  Options.Focus = 'simulation';                                     
  Options.N4Weight = 'SSARX';                                                                                                        
- ss5 = n4sid(d_estimate, 18, 'Form', 'free', 'InputDelay', [0 4], Options)
- compare(d_estimate,ss5)
- compare(d_validation,ss5)
+ ss5 = n4sid(de, 18, 'Form', 'free', 'InputDelay', [0 4], Options)
+ compare(de,ss5)
+ compare(dv,ss5)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:24 -> 69.66%
+Order:24 -> 68.38%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                   
- d_estimate=data(1:23065);
- d_validation=data(23066:32950);
+ de=data(1:22000);
+ dv=data(22000:32950);
  Options = n4sidOptions;                                           
  Options.Display = 'on';                                           
  Options.Focus = 'simulation';                                     
  Options.N4Weight = 'SSARX';                                                                                                         
- ss5 = n4sid(d_estimate, 24, 'Form', 'free', 'InputDelay', [0 2], Options)
- compare(d_estimate,ss5)
- compare(d_validation,ss5)
+ ss5 = n4sid(de, 24, 'Form', 'free', 'InputDelay', [0 4], Options)
+ compare(de,ss5)
+ compare(dv,ss5)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Order:30 -> 69.74%
+Order:30 -> 68.8%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------                                    
- d_estimate=data(1:23065);
- d_validation=data(23066:32950);
+ de=data(1:22000);
+ dv=data(22000:32950);
  Options = n4sidOptions;                                           
  Options.Display = 'on';                                           
  Options.Focus = 'simulation';                                     
  Options.N4Weight = 'SSARX';                                                                                                         
- ss5 = n4sid(d_estimate, 30, 'Form', 'free', 'InputDelay', [0 4], Options)
- compare(d_estimate,ss5)
- compare(d_validation,ss5)
+ ss5 = n4sid(de, 30, 'Form', 'free', 'InputDelay', [0 3], Options)
+ compare(de,ss5)
+ compare(dv,ss5)
