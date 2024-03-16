@@ -1,1 +1,27 @@
+TT = timetable(Torque, Wave_m1p2, Velo,'SampleRate',50);
+
+data=iddata(TT,'OutputName',{'Velo'},'InputName',{'Torque','Wave_m1p2'});
+
+% Total Number of data 32950
+
+% 70% for estimation
+d_estimate=data(1:23065);
+
+
+Options = n4sidOptions;                                           
+ Options.Display = 'on';                                           
+ Options.Focus = 'simulation';                                     
+ Options.N4Weight = 'SSARX';                                       
+                                                                   
+ ss5 = n4sid(data, 4, 'Form', 'free', 'InputDelay', [0 4], Options)
+                                                                  
+% Compare
+ compare(d_estimate,ss5)
+
+
+% 30% for validation
+d_validation=data(23066:32950);
+
+compare(d_validation,ss5)
+
 
