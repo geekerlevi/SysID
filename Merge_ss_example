@@ -4,11 +4,11 @@ data=iddata(TT,'OutputName',{'Velo'},'InputName',{'Torque','Wave_m1p2'});
 
 % Total Number of data 32950
 
-% 70% for estimation
-d_estimate=data(1:23065);
+ % 2/3 for estimation
+ de=data(1:22000);
 
-% 30% for validation
-d_validation=data(23066:32950);
+ % 1/3 for validation
+ dv=data(22000:32950);
 
 
  Options = n4sidOptions;                                           
@@ -16,10 +16,10 @@ d_validation=data(23066:32950);
  Options.Focus = 'simulation';                                     
  Options.N4Weight = 'SSARX';                                       
                                                                    
- ss5 = n4sid(data, 4, 'Form', 'free', 'InputDelay', [0 4], Options)
+ ss5 = n4sid(de, 4, 'Form', 'free', 'InputDelay', [0 4], Options)
                                                                   
 % Compare
- compare(d_estimate,ss5)
- compare(d_validation,ss5)
+ compare(de,ss5)
+ compare(dv,ss5)
 
 
