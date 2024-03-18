@@ -71,6 +71,19 @@ Order:24 -> 68.94%
  ss5 = n4sid(de, 24, 'Form', 'free', 'InputDelay', [0 1], Options)
  compare(de,ss5)
  compare(dv,ss5)
+
+
+
+ de=data(1:22000);
+ dv=data(22000:32950);
+ Options = n4sidOptions;                                         
+ Options.Display = 'on';                                         
+ Options.InitialState = 'zero';                                  
+ Options.EnforceStability = true;                                
+ Options.N4Weight = 'SSARX';  
+ ss5 = n4sid(de, 24, 'Form', 'free', 'InputDelay', [0 1], Options)
+ compare(de,ss5)
+ compare(dv,ss5)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Order:30 -> 68.94%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
