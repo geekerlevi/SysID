@@ -17,7 +17,7 @@ Order:4 -> 63.74%
  Options.EnforceStability = true;                                
  Options.N4Weight = 'SSARX';                                      
                                                                                                                                    
- ss5 = n4sid(de, 4, 'Form', 'free', 'InputDelay', [0 4], Options)
+ ss5 = n4sid(de, 4, 'Form', 'free', 'InputDelay', [0 2], Options)
                                                                   
 % Compare
  compare(de,ss5)
@@ -73,7 +73,7 @@ Order:24 -> 68.94%
  Options.InitialState = 'zero';                                  
  Options.EnforceStability = true;                                
  Options.N4Weight = 'SSARX';                                                                                                           
- ss5 = n4sid(de, 24, 'Form', 'free', 'InputDelay', [0 2], Options)
+ ss5 = n4sid(de, 24, 'Form', 'free', 'InputDelay', [0 1], Options)
  compare(de,ss5)
  compare(dv,ss5)
 
@@ -87,7 +87,7 @@ Order:30 -> 68.94%
  Options.InitialState = 'zero';                                  
  Options.EnforceStability = true;                                
  Options.N4Weight = 'SSARX';                                                                   
- ss5 = n4sid(de, 30, 'Form', 'free', 'InputDelay', [0 3], Options)
+ ss5 = n4sid(de, 30, 'Form', 'free', 'InputDelay', [0 2], Options)
                                                                   
  compare(de,ss5)
  compare(dv,ss5)
