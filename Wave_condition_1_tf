@@ -22,6 +22,8 @@ Order:4 -> 64.32%
   % This enforces the stability of the estimated model, ensuring that the poles of the transfer function will be inside the unit circle in the z-plane (for discrete-time models).                                 
   Options.EnforceStability = true;
 
+  Options.InitialCondition = 'zero'; 
+  
   % This sets the maximum number of iterations for the optimization algorithm to 100. 
   % The optimization algorithm is used to fit the model parameters to the data.                           
   Options.SearchOptions.MaxIterations = 100;                 
@@ -96,6 +98,7 @@ Order:6 -> 67.43%
   Options = tfestOptions;
   Options.Display = 'on';  
   Options.EnforceStability = true;
+  Options.InitialCondition = 'zero'; 
   Options.SearchOptions.MaxIterations = 100;                 
   np = [3 3];
   nz = [3 3]; 
@@ -130,7 +133,8 @@ Order:12 -> 68.93%
   dv=data(22000:32950);
 
   Options = tfestOptions;
-  Options.Display = 'on';  
+  Options.Display = 'on'; 
+  Options.InitialCondition = 'zero'; 
   Options.EnforceStability = true;
   Options.SearchOptions.MaxIterations = 100;                 
   np = [6 6];
@@ -168,6 +172,7 @@ Order:18 -> 68.01%
   Options = tfestOptions;
   Options.Display = 'on';  
   Options.EnforceStability = true;
+  Options.InitialCondition = 'zero'; 
   Options.SearchOptions.MaxIterations = 100;                 
   np = [9 9];
   nz = [9 9]; 
@@ -203,6 +208,7 @@ Order:24 -> 67.56%
   Options = tfestOptions;
   Options.Display = 'on';  
   Options.EnforceStability = true;
+  Options.InitialCondition = 'zero'; 
   Options.SearchOptions.MaxIterations = 100;                 
   np = [12 12];
   nz = [12 12]; 
@@ -239,6 +245,7 @@ Order:30 -> 69.03%
   Options = tfestOptions;
   Options.Display = 'on';  
   Options.EnforceStability = true;
+  Options.InitialCondition = 'zero'; 
   Options.SearchOptions.MaxIterations = 100;                 
   np = [12 13];
   nz = [14 16]; 
