@@ -1,0 +1,78 @@
+================================================================================================================================================================================================
+[Transfer function]
+  de=data(1:22000);
+  dv=data(22000:32950);
+
+  Options = tfestOptions;
+  Options.Display = 'on';  
+  Options.EnforceStability = true;
+  Options.InitialCondition = 'zero';                
+  Options.SearchOptions.MaxIterations = 100;                 
+  np = [x x];
+  nz = [x x]; 
+  num = arrayfun(@(x)NaN(1,x), nz+1,'UniformOutput',false); 
+  den = arrayfun(@(x)[1, NaN(1,x)],np,'UniformOutput',false);
+  iodValue = [0 x];
+  iodFree = [false true];
+  iodMin = [0 1];                                            
+  iodMax = [0 100];
+  sysinit = idtf(num, den, 0.02);                            
+  sysinit.Structure(1,1).num.Value(1) = 0;                   
+  sysinit.Structure(1,1).num.Free(1) = false;                
+  sysinit.Structure(1,2).num.Value(1) = 0;                   
+  sysinit.Structure(1,2).num.Free(1) = false;                
+  for j = 1:2                                                
+      iod_j = sysinit.Structure(j).ioDelay; 
+      iod_j.Value = iodValue(j); 
+      iod_j.Free = iodFree(j); 
+      iod_j.Maximum = iodMax(j); 
+      iod_j.Minimum = iodMin(j);
+      sysinit.Structure(j).ioDelay = iod_j;                   
+  end                                                        
+  tf26 = tfest(de, sysinit, Options)
+
+  compare(de,tf26)
+  compare(dv,tf26)
+================================================================================================================================================================================================
+[State space]
+ de=data(1:22000);
+ dv=data(22000:32950);
+ Options = n4sidOptions;                                         
+ Options.Display = 'on';                                         
+ Options.InitialState = 'zero';                                  
+ Options.EnforceStability = true;                                
+ Options.N4Weight = 'SSARX';  
+ ss5 = n4sid(de, x, 'Form', 'free', 'InputDelay', [0 x], Options)
+ compare(de,ss5)
+ compare(dv,ss5)
+================================================================================================================================================================================================
+[ARX]
+  de=data(1:22000);
+  dv=data(22000:32950);
+  Opt = arxOptions; 
+  Opt.InitialCondition = 'zero';   
+  % Opt.Focus = 'simulation';
+  na = 6;
+  nb = [1 6];
+  nk = [0 1];
+  arx10100 = arx(de,[na,nb,nk], Opt);
+  compare(de,arx10100)
+  compare(dv,arx10100)
+================================================================================================================================================================================================
+[Hammerstein Wiener]
+de=data(1:22000);
+dv=data(22000:32950);
+nb = [14 14];                                        
+nf = [13 13];                                        
+nk = [0 4];                                        
+nl1 = idPiecewiseLinear;                           
+nl2 = idPiecewiseLinear;                           
+inputNL = [nl1; nl2];                              
+nl1 = idPiecewiseLinear;                           
+outputNL = [nl1];                                  
+initialModel = idnlhw([nb nf nk],inputNL,outputNL);
+Options = nlhwOptions;                            
+Options.Display = 'on';                           
+nlhw1 = nlhw(de, initialModel, Options);   
+compare(de, nlhw1)
+compare(dv, nlhw1)
