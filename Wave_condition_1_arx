@@ -13,6 +13,7 @@ Order:4 -> 49.69%
   % The variable Opt is used to store these options, which can be customized to control various aspects of the estimation process.                       
   Opt = arxOptions; 
   Opt.Focus = 'simulation';
+  Opt.InitialCondition = 'zero';   
 
   % This sets the order of the autoregressive part of the model, A, which represents the number of past output values to be used in the model.             
   na = 4;
