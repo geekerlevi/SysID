@@ -39,6 +39,7 @@ Order:6 -> 56.72%
   de=data(1:22000);
   dv=data(22000:32950);
   Opt = arxOptions; 
+  Opt.InitialCondition = 'zero';   
   Opt.Focus = 'simulation';
   na = 6;
   nb = [1 6];
