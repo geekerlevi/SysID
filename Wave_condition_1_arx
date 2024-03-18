@@ -12,7 +12,6 @@ Order:4 -> 49.69%
   % This command creates a set of options for the ARX model estimation. 
   % The variable Opt is used to store these options, which can be customized to control various aspects of the estimation process.                       
   Opt = arxOptions; 
-  Opt.Focus = 'simulation';
   Opt.InitialCondition = 'zero';   
 
   % This sets the order of the autoregressive part of the model, A, which represents the number of past output values to be used in the model.             
@@ -40,7 +39,6 @@ Order:6 -> 56.72%
   dv=data(22000:32950);
   Opt = arxOptions; 
   Opt.InitialCondition = 'zero';   
-  Opt.Focus = 'simulation';
   na = 6;
   nb = [1 6];
   nk = [0 1];
@@ -53,7 +51,7 @@ Order:12 -> 57.24%
   de=data(1:22000);
   dv=data(22000:32950);
   Opt = arxOptions;  
-  Opt.Focus = 'simulation';
+  Opt.InitialCondition = 'zero';  
   na = 10;
   nb = [1 12];
   nk = [0 1];
@@ -66,9 +64,9 @@ Order:18 -> 58.95%
   de=data(1:22000);
   dv=data(22000:32950);
   Opt = arxOptions;  
-  Opt.Focus = 'simulation';
-  na = 10;
-  nb = [2 18];
+  Opt.InitialCondition = 'zero';  
+  na = 8;
+  nb = [1 18];
   nk = [0 3];
   arx10100 = arx(de,[na,nb,nk], Opt);
   compare(de,arx10100)
@@ -79,9 +77,9 @@ Order:24 -> 59.13%
   de=data(1:22000);
   dv=data(22000:32950);
   Opt = arxOptions; 
-  Opt.Focus = 'simulation';
-  na = 10;
-  nb = [2 24];
+  Opt.InitialCondition = 'zero';  
+  na = 8;
+  nb = [1 24];
   nk = [0 3];
   arx10100 = arx(de,[na,nb,nk], Opt);
   compare(de,arx10100)
@@ -92,12 +90,11 @@ Order:30 -> 60.88%
   de=data(1:22000);
   dv=data(22000:32950);
   Opt = arxOptions; 
-  Opt.Focus = 'simulation';
-  na = 11;
-  nb = [2 30];
+  Opt.InitialCondition = 'zero'; 
+  na = 7;
+  nb = [1 30];
   nk = [0 4];
   arx10100 = arx(data,[na,nb,nk], Opt);
-  compare(de,arx10100)
   compare(de,arx10100)
   compare(dv,arx10100)
 
