@@ -21,6 +21,8 @@ Order:4 -> 62.42%
   % This enforces the stability of the estimated model, ensuring that the poles of the transfer function will be inside the unit circle in the z-plane (for discrete-time models).                                 
   Options.EnforceStability = true;
 
+  Options.InitialCondition = 'zero';   
+
   % This sets the maximum number of iterations for the optimization algorithm to 100. 
   % The optimization algorithm is used to fit the model parameters to the data.                           
   Options.SearchOptions.MaxIterations = 100;                 
@@ -95,6 +97,7 @@ Order:6 -> 63.92%
   Options = tfestOptions;
   Options.Display = 'on';  
   Options.EnforceStability = true;
+  Options.InitialCondition = 'zero';   
   Options.SearchOptions.MaxIterations = 100;                 
   np = [3 3];
   nz = [3 3]; 
@@ -130,6 +133,7 @@ Order:12 -> 65.7%
   Options = tfestOptions;
   Options.Display = 'on';  
   Options.EnforceStability = true;
+  Options.InitialCondition = 'zero';   
   Options.SearchOptions.MaxIterations = 100;                 
   np = [6 6];
   nz = [6 6]; 
@@ -165,6 +169,7 @@ Order:18 -> 66.85%
   Options = tfestOptions;
   Options.Display = 'on';  
   Options.EnforceStability = true;
+  Options.InitialCondition = 'zero';   
   Options.SearchOptions.MaxIterations = 100;                 
   np = [8 9];
   nz = [9 9]; 
@@ -200,8 +205,9 @@ Order:24 -> 63.10%
   Options = tfestOptions;
   Options.Display = 'on';  
   Options.EnforceStability = true;
+  Options.InitialCondition = 'zero';   
   Options.SearchOptions.MaxIterations = 100;                 
-  np = [9 12];
+  np = [10 12];
   nz = [12 12]; 
   num = arrayfun(@(x)NaN(1,x), nz+1,'UniformOutput',false); 
   den = arrayfun(@(x)[1, NaN(1,x)],np,'UniformOutput',false);
