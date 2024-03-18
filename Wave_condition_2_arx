@@ -34,7 +34,7 @@ Order:6 -> 58.9%
   Opt = arxOptions; 
   Opt.InitialCondition = 'zero';   
   % Opt.Focus = 'simulation';
-  na = 5;
+  na = 4;
   nb = [1 6];
   nk = [0 1];
   arx10100 = arx(de,[na,nb,nk], Opt);
@@ -90,7 +90,7 @@ Order:30 -> 59.77%
   Opt = arxOptions; 
   Opt.InitialCondition = 'zero';   
   % Opt.Focus = 'simulation';
-  na = 20;
+  na = 15;
   nb = [1 30];
   nk = [0 3];
   arx10100 = arx(de,[na,nb,nk], Opt);
