@@ -3,7 +3,13 @@ Order:4 -> 65.07%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   % Details about Estimation Data                             
   % Import   data                                            
-                                                              
+
+  % 2/3 for estimation
+  de=data(1:22000);
+
+  % 1/3 for validation
+  dv=data(22000:32950);
+
   % Transfer function estimation
   % This creates a set of options for the tfest function.
   % The Options variable will store these options and can be customized to control various aspects of the transfer function estimation process.                              
@@ -75,62 +81,29 @@ Order:4 -> 65.07%
   end                                                        
                                                               
   % Perform estimation using "sysinit" as template           
-  tf26 = tfest(data, sysinit, Options)
+  tf26 = tfest(de, sysinit, Options)
 
   % Compare
-  compare(data,tf26)
+ compare(de,tf26)
+ compare(dv,tf26)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Order:6 -> 67.64%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-% Details about Estimation Data                             
-  % Import   data                                            
-                                                              
-  % Transfer function estimation
-  % This creates a set of options for the tfest function.
-  % The Options variable will store these options and can be customized to control various aspects of the transfer function estimation process.                              
+  de=data(1:22000);
+  dv=data(22000:32950);
+
   Options = tfestOptions;
-
-  % This sets the Display option to 'on', meaning that MATLAB will show output in the command window about the progress of the model estimation.                                    
   Options.Display = 'on';  
-
-  % This enforces the stability of the estimated model, ensuring that the poles of the transfer function will be inside the unit circle in the z-plane (for discrete-time models).                                 
   Options.EnforceStability = true;
-
-  % This sets the maximum number of iterations for the optimization algorithm to 100. 
-  % The optimization algorithm is used to fit the model parameters to the data.                           
   Options.SearchOptions.MaxIterations = 100;                 
-
-  % This specifies the orders of the denominator polynomial for a MIMO (Multiple-Input Multiple-Output) system. 
-  % Each '3' in the array indicates that the denominator for each input-output pair is a second-order polynomial.                                                           
   np = [3 3];
-
-  % This specifies the orders of the numerator polynomial for the MIMO system. 
-  % Each '3' indicates that the numerator for each input-output pair is a third-order polynomial.                                                
   nz = [3 3]; 
-
-  % This uses the arrayfun function to create cell arrays for the numerator coefficients. NaN values are used to initialize the coefficients, which tfest will estimate. 
-  % The nz+1 is because the order of the numerator polynomial is one degree higher than the number of coefficients (e.g., a third-order polynomial has four coefficients).                                               
   num = arrayfun(@(x)NaN(1,x), nz+1,'UniformOutput',false); 
-
-  % Similarly, this creates cell arrays for the denominator coefficients, with the first coefficient set to 1 (assuming a monic polynomial), and the remaining coefficients initialized to NaN for estimation. 
   den = arrayfun(@(x)[1, NaN(1,x)],np,'UniformOutput',false);
-                                                              
-  % Prepare input/output delay
-
-  % This line sets the initial values of the input/output delays for two inputs. The first input has a delay of 0 seconds, and the second input has a delay of 1 second.                               
   iodValue = [0 3];
-
-  % This line indicates whether each delay is a free parameter to be estimated. 
-  % The first input is set to false, meaning that the delays are fixed and not to be estimated during the identification process.
   iodFree = [false true];
-
-  % These lines set the minimum and maximum bounds for the input/output delays. 
-  % In this case, The second input is set from 1 to 100 seconds
-  % Since iodFree is set to false, the first input bound is not used.
   iodMin = [0 1];                                            
   iodMax = [0 100];
-
-  % This line initializes the transfer function model with numerator num, denominator den, and a sample time of 0.02 seconds.
   sysinit = idtf(num, den, 0.02);                            
   sysinit.Structure(1,1).num.Value(1) = 0;                   
   sysinit.Structure(1,1).num.Free(1) = false;                
@@ -138,80 +111,34 @@ Order:6 -> 67.64%
   sysinit.Structure(1,2).num.Free(1) = false;                
   for j = 1:2                                                
       iod_j = sysinit.Structure(j).ioDelay; 
-
-      % Sets the current value of the delay. iodValue is an array that must have been defined elsewhere in the code, holding the actual delay values for each input.                  
       iod_j.Value = iodValue(j); 
-
-      % Indicates whether the delay is a free parameter to be estimated (which we assume is false from the comments).                             
       iod_j.Free = iodFree(j); 
-
-      % Sets the maximum value for the delay.                               
       iod_j.Maximum = iodMax(j); 
-
-      % Sets the minimum value for the delay.                             
       iod_j.Minimum = iodMin(j);
-
-      % Applies the configured delay settings back to the transfer function model's structure.                              
       sysinit.Structure(j).ioDelay = iod_j;                   
   end                                                        
-                                                              
-  % Perform estimation using "sysinit" as template           
-  tf26 = tfest(data, sysinit, Options)
+  tf26 = tfest(de, sysinit, Options)
 
-  % Compare
-  compare(data,tf26)
+  compare(de,tf26)
+  compare(dv,tf26)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Order:12 -> 70.49%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  % Details about Estimation Data                             
-  % Import   data                                            
-                                                              
-  % Transfer function estimation
-  % This creates a set of options for the tfest function.
-  % The Options variable will store these options and can be customized to control various aspects of the transfer function estimation process.                              
+  de=data(1:22000);
+  dv=data(22000:32950);
+
   Options = tfestOptions;
-
-  % This sets the Display option to 'on', meaning that MATLAB will show output in the command window about the progress of the model estimation.                                    
   Options.Display = 'on';  
-
-  % This enforces the stability of the estimated model, ensuring that the poles of the transfer function will be inside the unit circle in the z-plane (for discrete-time models).                                 
   Options.EnforceStability = true;
-
-  % This sets the maximum number of iterations for the optimization algorithm to 100. 
-  % The optimization algorithm is used to fit the model parameters to the data.                           
   Options.SearchOptions.MaxIterations = 100;                 
-
-  % This specifies the orders of the denominator polynomial for a MIMO (Multiple-Input Multiple-Output) system. 
-  % Each '3' in the array indicates that the denominator for each input-output pair is a second-order polynomial.                                                           
   np = [6 6];
-
-  % This specifies the orders of the numerator polynomial for the MIMO system. 
-  % Each '3' indicates that the numerator for each input-output pair is a third-order polynomial.                                                
   nz = [6 6]; 
-
-  % This uses the arrayfun function to create cell arrays for the numerator coefficients. NaN values are used to initialize the coefficients, which tfest will estimate. 
-  % The nz+1 is because the order of the numerator polynomial is one degree higher than the number of coefficients (e.g., a third-order polynomial has four coefficients).                                               
   num = arrayfun(@(x)NaN(1,x), nz+1,'UniformOutput',false); 
-
-  % Similarly, this creates cell arrays for the denominator coefficients, with the first coefficient set to 1 (assuming a monic polynomial), and the remaining coefficients initialized to NaN for estimation. 
   den = arrayfun(@(x)[1, NaN(1,x)],np,'UniformOutput',false);
-                                                              
-  % Prepare input/output delay
-
-  % This line sets the initial values of the input/output delays for two inputs. The first input has a delay of 0 seconds, and the second input has a delay of 1 second.                               
   iodValue = [0 3];
-
-  % This line indicates whether each delay is a free parameter to be estimated. 
-  % The first input is set to false, meaning that the delays are fixed and not to be estimated during the identification process.
   iodFree = [false true];
-
-  % These lines set the minimum and maximum bounds for the input/output delays. 
-  % In this case, The second input is set from 1 to 100 seconds
-  % Since iodFree is set to false, the first input bound is not used.
   iodMin = [0 1];                                            
   iodMax = [0 100];
-
-  % This line initializes the transfer function model with numerator num, denominator den, and a sample time of 0.02 seconds.
   sysinit = idtf(num, den, 0.02);                            
   sysinit.Structure(1,1).num.Value(1) = 0;                   
   sysinit.Structure(1,1).num.Free(1) = false;                
@@ -219,80 +146,34 @@ Order:12 -> 70.49%
   sysinit.Structure(1,2).num.Free(1) = false;                
   for j = 1:2                                                
       iod_j = sysinit.Structure(j).ioDelay; 
-
-      % Sets the current value of the delay. iodValue is an array that must have been defined elsewhere in the code, holding the actual delay values for each input.                  
       iod_j.Value = iodValue(j); 
-
-      % Indicates whether the delay is a free parameter to be estimated (which we assume is false from the comments).                             
       iod_j.Free = iodFree(j); 
-
-      % Sets the maximum value for the delay.                               
       iod_j.Maximum = iodMax(j); 
-
-      % Sets the minimum value for the delay.                             
       iod_j.Minimum = iodMin(j);
-
-      % Applies the configured delay settings back to the transfer function model's structure.                              
       sysinit.Structure(j).ioDelay = iod_j;                   
   end                                                        
-                                                              
-  % Perform estimation using "sysinit" as template           
-  tf26 = tfest(data, sysinit, Options)
+  tf26 = tfest(de, sysinit, Options)
 
-  % Compare
-  compare(data,tf26)
+  compare(de,tf26)
+  compare(dv,tf26)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Order:18 -> 70.97%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  % Details about Estimation Data                             
-  % Import   data                                            
-                                                              
-  % Transfer function estimation
-  % This creates a set of options for the tfest function.
-  % The Options variable will store these options and can be customized to control various aspects of the transfer function estimation process.                              
+  de=data(1:22000);
+  dv=data(22000:32950);
+
   Options = tfestOptions;
-
-  % This sets the Display option to 'on', meaning that MATLAB will show output in the command window about the progress of the model estimation.                                    
   Options.Display = 'on';  
-
-  % This enforces the stability of the estimated model, ensuring that the poles of the transfer function will be inside the unit circle in the z-plane (for discrete-time models).                                 
   Options.EnforceStability = true;
-
-  % This sets the maximum number of iterations for the optimization algorithm to 100. 
-  % The optimization algorithm is used to fit the model parameters to the data.                           
   Options.SearchOptions.MaxIterations = 100;                 
-
-  % This specifies the orders of the denominator polynomial for a MIMO (Multiple-Input Multiple-Output) system. 
-  % Each '3' in the array indicates that the denominator for each input-output pair is a second-order polynomial.                                                           
   np = [9 9];
-
-  % This specifies the orders of the numerator polynomial for the MIMO system. 
-  % Each '3' indicates that the numerator for each input-output pair is a third-order polynomial.                                                
   nz = [9 9]; 
-
-  % This uses the arrayfun function to create cell arrays for the numerator coefficients. NaN values are used to initialize the coefficients, which tfest will estimate. 
-  % The nz+1 is because the order of the numerator polynomial is one degree higher than the number of coefficients (e.g., a third-order polynomial has four coefficients).                                               
   num = arrayfun(@(x)NaN(1,x), nz+1,'UniformOutput',false); 
-
-  % Similarly, this creates cell arrays for the denominator coefficients, with the first coefficient set to 1 (assuming a monic polynomial), and the remaining coefficients initialized to NaN for estimation. 
   den = arrayfun(@(x)[1, NaN(1,x)],np,'UniformOutput',false);
-                                                              
-  % Prepare input/output delay
-
-  % This line sets the initial values of the input/output delays for two inputs. The first input has a delay of 0 seconds, and the second input has a delay of 1 second.                               
   iodValue = [0 3];
-
-  % This line indicates whether each delay is a free parameter to be estimated. 
-  % The first input is set to false, meaning that the delays are fixed and not to be estimated during the identification process.
   iodFree = [false true];
-
-  % These lines set the minimum and maximum bounds for the input/output delays. 
-  % In this case, The second input is set from 1 to 100 seconds
-  % Since iodFree is set to false, the first input bound is not used.
   iodMin = [0 1];                                            
   iodMax = [0 100];
-
-  % This line initializes the transfer function model with numerator num, denominator den, and a sample time of 0.02 seconds.
   sysinit = idtf(num, den, 0.02);                            
   sysinit.Structure(1,1).num.Value(1) = 0;                   
   sysinit.Structure(1,1).num.Free(1) = false;                
@@ -300,80 +181,34 @@ Order:18 -> 70.97%
   sysinit.Structure(1,2).num.Free(1) = false;                
   for j = 1:2                                                
       iod_j = sysinit.Structure(j).ioDelay; 
-
-      % Sets the current value of the delay. iodValue is an array that must have been defined elsewhere in the code, holding the actual delay values for each input.                  
       iod_j.Value = iodValue(j); 
-
-      % Indicates whether the delay is a free parameter to be estimated (which we assume is false from the comments).                             
       iod_j.Free = iodFree(j); 
-
-      % Sets the maximum value for the delay.                               
       iod_j.Maximum = iodMax(j); 
-
-      % Sets the minimum value for the delay.                             
       iod_j.Minimum = iodMin(j);
-
-      % Applies the configured delay settings back to the transfer function model's structure.                              
       sysinit.Structure(j).ioDelay = iod_j;                   
   end                                                        
-                                                              
-  % Perform estimation using "sysinit" as template           
-  tf26 = tfest(data, sysinit, Options)
+  tf26 = tfest(de, sysinit, Options)
 
-  % Compare
-  compare(data,tf26)
+  compare(de,tf26)
+  compare(dv,tf26)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Order:24 -> 72.12%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  % Details about Estimation Data                             
-  % Import   data                                            
-                                                              
-  % Transfer function estimation
-  % This creates a set of options for the tfest function.
-  % The Options variable will store these options and can be customized to control various aspects of the transfer function estimation process.                              
+  de=data(1:22000);
+  dv=data(22000:32950);
+
   Options = tfestOptions;
-
-  % This sets the Display option to 'on', meaning that MATLAB will show output in the command window about the progress of the model estimation.                                    
   Options.Display = 'on';  
-
-  % This enforces the stability of the estimated model, ensuring that the poles of the transfer function will be inside the unit circle in the z-plane (for discrete-time models).                                 
   Options.EnforceStability = true;
-
-  % This sets the maximum number of iterations for the optimization algorithm to 100. 
-  % The optimization algorithm is used to fit the model parameters to the data.                           
   Options.SearchOptions.MaxIterations = 100;                 
-
-  % This specifies the orders of the denominator polynomial for a MIMO (Multiple-Input Multiple-Output) system. 
-  % Each '3' in the array indicates that the denominator for each input-output pair is a second-order polynomial.                                                           
   np = [12 12];
-
-  % This specifies the orders of the numerator polynomial for the MIMO system. 
-  % Each '3' indicates that the numerator for each input-output pair is a third-order polynomial.                                                
   nz = [12 12]; 
-
-  % This uses the arrayfun function to create cell arrays for the numerator coefficients. NaN values are used to initialize the coefficients, which tfest will estimate. 
-  % The nz+1 is because the order of the numerator polynomial is one degree higher than the number of coefficients (e.g., a third-order polynomial has four coefficients).                                               
   num = arrayfun(@(x)NaN(1,x), nz+1,'UniformOutput',false); 
-
-  % Similarly, this creates cell arrays for the denominator coefficients, with the first coefficient set to 1 (assuming a monic polynomial), and the remaining coefficients initialized to NaN for estimation. 
   den = arrayfun(@(x)[1, NaN(1,x)],np,'UniformOutput',false);
-                                                              
-  % Prepare input/output delay
-
-  % This line sets the initial values of the input/output delays for two inputs. The first input has a delay of 0 seconds, and the second input has a delay of 1 second.                               
   iodValue = [0 3];
-
-  % This line indicates whether each delay is a free parameter to be estimated. 
-  % The first input is set to false, meaning that the delays are fixed and not to be estimated during the identification process.
   iodFree = [false true];
-
-  % These lines set the minimum and maximum bounds for the input/output delays. 
-  % In this case, The second input is set from 1 to 100 seconds
-  % Since iodFree is set to false, the first input bound is not used.
   iodMin = [0 1];                                            
   iodMax = [0 100];
-
-  % This line initializes the transfer function model with numerator num, denominator den, and a sample time of 0.02 seconds.
   sysinit = idtf(num, den, 0.02);                            
   sysinit.Structure(1,1).num.Value(1) = 0;                   
   sysinit.Structure(1,1).num.Free(1) = false;                
@@ -381,80 +216,34 @@ Order:24 -> 72.12%
   sysinit.Structure(1,2).num.Free(1) = false;                
   for j = 1:2                                                
       iod_j = sysinit.Structure(j).ioDelay; 
-
-      % Sets the current value of the delay. iodValue is an array that must have been defined elsewhere in the code, holding the actual delay values for each input.                  
       iod_j.Value = iodValue(j); 
-
-      % Indicates whether the delay is a free parameter to be estimated (which we assume is false from the comments).                             
       iod_j.Free = iodFree(j); 
-
-      % Sets the maximum value for the delay.                               
       iod_j.Maximum = iodMax(j); 
-
-      % Sets the minimum value for the delay.                             
       iod_j.Minimum = iodMin(j);
-
-      % Applies the configured delay settings back to the transfer function model's structure.                              
       sysinit.Structure(j).ioDelay = iod_j;                   
   end                                                        
-                                                              
-  % Perform estimation using "sysinit" as template           
-  tf26 = tfest(data, sysinit, Options)
+  tf26 = tfest(de, sysinit, Options)
 
-  % Compare
-  compare(data,tf26)
+  compare(de,tf26)
+  compare(dv,tf26)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Order:30 -> 72.61%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  % Details about Estimation Data                             
-  % Import   data                                            
-                                                              
-  % Transfer function estimation
-  % This creates a set of options for the tfest function.
-  % The Options variable will store these options and can be customized to control various aspects of the transfer function estimation process.                              
+  de=data(1:22000);
+  dv=data(22000:32950);
+
   Options = tfestOptions;
-
-  % This sets the Display option to 'on', meaning that MATLAB will show output in the command window about the progress of the model estimation.                                    
   Options.Display = 'on';  
-
-  % This enforces the stability of the estimated model, ensuring that the poles of the transfer function will be inside the unit circle in the z-plane (for discrete-time models).                                 
   Options.EnforceStability = true;
-
-  % This sets the maximum number of iterations for the optimization algorithm to 100. 
-  % The optimization algorithm is used to fit the model parameters to the data.                           
   Options.SearchOptions.MaxIterations = 100;                 
-
-  % This specifies the orders of the denominator polynomial for a MIMO (Multiple-Input Multiple-Output) system. 
-  % Each '3' in the array indicates that the denominator for each input-output pair is a second-order polynomial.                                                           
   np = [14 15];
-
-  % This specifies the orders of the numerator polynomial for the MIMO system. 
-  % Each '3' indicates that the numerator for each input-output pair is a third-order polynomial.                                                
   nz = [15 15]; 
-
-  % This uses the arrayfun function to create cell arrays for the numerator coefficients. NaN values are used to initialize the coefficients, which tfest will estimate. 
-  % The nz+1 is because the order of the numerator polynomial is one degree higher than the number of coefficients (e.g., a third-order polynomial has four coefficients).                                               
   num = arrayfun(@(x)NaN(1,x), nz+1,'UniformOutput',false); 
-
-  % Similarly, this creates cell arrays for the denominator coefficients, with the first coefficient set to 1 (assuming a monic polynomial), and the remaining coefficients initialized to NaN for estimation. 
   den = arrayfun(@(x)[1, NaN(1,x)],np,'UniformOutput',false);
-                                                              
-  % Prepare input/output delay
-
-  % This line sets the initial values of the input/output delays for two inputs. The first input has a delay of 0 seconds, and the second input has a delay of 1 second.                               
   iodValue = [0 3];
-
-  % This line indicates whether each delay is a free parameter to be estimated. 
-  % The first input is set to false, meaning that the delays are fixed and not to be estimated during the identification process.
   iodFree = [false true];
-
-  % These lines set the minimum and maximum bounds for the input/output delays. 
-  % In this case, The second input is set from 1 to 100 seconds
-  % Since iodFree is set to false, the first input bound is not used.
   iodMin = [0 1];                                            
   iodMax = [0 100];
-
-  % This line initializes the transfer function model with numerator num, denominator den, and a sample time of 0.02 seconds.
   sysinit = idtf(num, den, 0.02);                            
   sysinit.Structure(1,1).num.Value(1) = 0;                   
   sysinit.Structure(1,1).num.Free(1) = false;                
@@ -462,25 +251,13 @@ Order:30 -> 72.61%
   sysinit.Structure(1,2).num.Free(1) = false;                
   for j = 1:2                                                
       iod_j = sysinit.Structure(j).ioDelay; 
-
-      % Sets the current value of the delay. iodValue is an array that must have been defined elsewhere in the code, holding the actual delay values for each input.                  
       iod_j.Value = iodValue(j); 
-
-      % Indicates whether the delay is a free parameter to be estimated (which we assume is false from the comments).                             
       iod_j.Free = iodFree(j); 
-
-      % Sets the maximum value for the delay.                               
       iod_j.Maximum = iodMax(j); 
-
-      % Sets the minimum value for the delay.                             
       iod_j.Minimum = iodMin(j);
-
-      % Applies the configured delay settings back to the transfer function model's structure.                              
       sysinit.Structure(j).ioDelay = iod_j;                   
   end                                                        
-                                                              
-  % Perform estimation using "sysinit" as template           
-  tf26 = tfest(data, sysinit, Options)
+  tf26 = tfest(de, sysinit, Options)
 
-  % Compare
-  compare(data,tf26)
+  compare(de,tf26)
+  compare(dv,tf26)
