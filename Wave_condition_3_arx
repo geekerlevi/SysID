@@ -6,7 +6,7 @@ Order:4 -> 55.12%
   % This command creates a set of options for the ARX model estimation. 
   % The variable Opt is used to store these options, which can be customized to control various aspects of the estimation process.                       
   Opt = arxOptions;       
-  Opt.Focus = 'simulation';
+  Opt.InitialCondition = 'zero';   
 
   % This sets the order of the autoregressive part of the model, A, which represents the number of past output values to be used in the model.             
   na = 4;
@@ -21,142 +21,76 @@ Order:4 -> 55.12%
   % This line calls the arx function to estimate the ARX model parameters from the given data. 
   % The function takes the data set data, which contains the time-series data of inputs and output, and the model orders [na,nb,nk], applying the options Opt. 
   % The resulting model is stored in the variable arx10100.                                     
-  arx10100 = arx(data,[na,nb,nk], Opt);
-  
-  % Compare
-  compare(data,arx10100)
+  arx10100 = arx(de,[na,nb,nk], Opt);
+  compare(de,arx10100)
+  compare(dv,arx10100)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Order:6 -> 52.97%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  % Import    data
-
-  % This command creates a set of options for the ARX model estimation. 
-  % The variable Opt is used to store these options, which can be customized to control various aspects of the estimation process.                       
+  de=data(1:22000);
+  dv=data(22000:32950);
   Opt = arxOptions; 
-  Opt.Focus = 'simulation';
-
-  % This sets the order of the autoregressive part of the model, A, which represents the number of past output values to be used in the model.             
-  na = 6;
-
-  % This sets the order of the exogenous input part of the model, B, for each input. In this case, it indicates that the model should use 10 past values from each of the two inputs.                             
+  Opt.InitialCondition = 'zero';   
+  % Opt.Focus = 'simulation';
+  na = 5;
   nb = [1 6];
-
-  % This sets the input delay for each input (also known as the dead time or time delay). The first input has a delay of 0 time steps, while the second input has a delay of 1 time step. 
-  % This means the first input affects the output immediately, while the second input's effect on the output is delayed by one time step.                        
   nk = [0 1];
-
-  % This line calls the arx function to estimate the ARX model parameters from the given data. 
-  % The function takes the data set data, which contains the time-series data of inputs and output, and the model orders [na,nb,nk], applying the options Opt. 
-  % The resulting model is stored in the variable arx10100.                                     
-  arx10100 = arx(data,[na,nb,nk], Opt);
-  
-  % Compare
-  compare(data,arx10100)
+  arx10100 = arx(de,[na,nb,nk], Opt);
+  compare(de,arx10100)
+  compare(dv,arx10100)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Order:12 -> 55.9%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  % Import    data
-
-  % This command creates a set of options for the ARX model estimation. 
-  % The variable Opt is used to store these options, which can be customized to control various aspects of the estimation process.                       
+  de=data(1:22000);
+  dv=data(22000:32950);
   Opt = arxOptions; 
-  Opt.Focus = 'simulation';
-
-  % This sets the order of the autoregressive part of the model, A, which represents the number of past output values to be used in the model.             
+  Opt.InitialCondition = 'zero';   
+  % Opt.Focus = 'simulation';
   na = 12;
-
-  % This sets the order of the exogenous input part of the model, B, for each input. In this case, it indicates that the model should use 10 past values from each of the two inputs.                             
   nb = [1 12];
-
-  % This sets the input delay for each input (also known as the dead time or time delay). The first input has a delay of 0 time steps, while the second input has a delay of 1 time step. 
-  % This means the first input affects the output immediately, while the second input's effect on the output is delayed by one time step.                        
   nk = [0 1];
-
-  % This line calls the arx function to estimate the ARX model parameters from the given data. 
-  % The function takes the data set data, which contains the time-series data of inputs and output, and the model orders [na,nb,nk], applying the options Opt. 
-  % The resulting model is stored in the variable arx10100.                                     
-  arx10100 = arx(data,[na,nb,nk], Opt);
-  
-  % Compare
-  compare(data,arx10100)
+  arx10100 = arx(de,[na,nb,nk], Opt);
+  compare(de,arx10100)
+  compare(dv,arx10100)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Order:18 -> 56.49%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  % Import    data
-
-  % This command creates a set of options for the ARX model estimation. 
-  % The variable Opt is used to store these options, which can be customized to control various aspects of the estimation process.                       
+  de=data(1:22000);
+  dv=data(22000:32950);
   Opt = arxOptions; 
-  Opt.Focus = 'simulation';
-
-  % This sets the order of the autoregressive part of the model, A, which represents the number of past output values to be used in the model.             
+  Opt.InitialCondition = 'zero';   
+  % Opt.Focus = 'simulation';
   na = 18;
-
-  % This sets the order of the exogenous input part of the model, B, for each input. In this case, it indicates that the model should use 10 past values from each of the two inputs.                             
-  nb = [3 18];
-
-  % This sets the input delay for each input (also known as the dead time or time delay). The first input has a delay of 0 time steps, while the second input has a delay of 1 time step. 
-  % This means the first input affects the output immediately, while the second input's effect on the output is delayed by one time step.                        
+  nb = [1 18];
   nk = [0 3];
-
-  % This line calls the arx function to estimate the ARX model parameters from the given data. 
-  % The function takes the data set data, which contains the time-series data of inputs and output, and the model orders [na,nb,nk], applying the options Opt. 
-  % The resulting model is stored in the variable arx10100.                                     
-  arx10100 = arx(data,[na,nb,nk], Opt);
-  
-  % Compare
-  compare(data,arx10100)
+  arx10100 = arx(de,[na,nb,nk], Opt);
+  compare(de,arx10100)
+  compare(dv,arx10100)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Order:24 -> 57.47%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  % Import    data
-
-  % This command creates a set of options for the ARX model estimation. 
-  % The variable Opt is used to store these options, which can be customized to control various aspects of the estimation process.                       
+  de=data(1:22000);
+  dv=data(22000:32950);
   Opt = arxOptions; 
-  Opt.Focus = 'simulation';
-
-  % This sets the order of the autoregressive part of the model, A, which represents the number of past output values to be used in the model.             
+  Opt.InitialCondition = 'zero';   
+  % Opt.Focus = 'simulation';
   na = 24;
-
-  % This sets the order of the exogenous input part of the model, B, for each input. In this case, it indicates that the model should use 10 past values from each of the two inputs.                             
   nb = [1 24];
-
-  % This sets the input delay for each input (also known as the dead time or time delay). The first input has a delay of 0 time steps, while the second input has a delay of 1 time step. 
-  % This means the first input affects the output immediately, while the second input's effect on the output is delayed by one time step.                        
   nk = [0 1];
-
-  % This line calls the arx function to estimate the ARX model parameters from the given data. 
-  % The function takes the data set data, which contains the time-series data of inputs and output, and the model orders [na,nb,nk], applying the options Opt. 
-  % The resulting model is stored in the variable arx10100.                                     
-  arx10100 = arx(data,[na,nb,nk], Opt);
-  
-  % Compare
-  compare(data,arx10100)
+  arx10100 = arx(de,[na,nb,nk], Opt);
+  compare(de,arx10100)
+  compare(dv,arx10100)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Order:30 -> 57.9%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-  % Import    data
-
-  % This command creates a set of options for the ARX model estimation. 
-  % The variable Opt is used to store these options, which can be customized to control various aspects of the estimation process.                       
-  Opt = arxOptions;  
-  Opt.Focus = 'simulation';
-
-  % This sets the order of the autoregressive part of the model, A, which represents the number of past output values to be used in the model.             
+  de=data(1:22000);
+  dv=data(22000:32950);
+  Opt = arxOptions; 
+  Opt.InitialCondition = 'zero';   
+  % Opt.Focus = 'simulation';
   na = 30;
-
-  % This sets the order of the exogenous input part of the model, B, for each input. In this case, it indicates that the model should use 10 past values from each of the two inputs.                             
-  nb = [2 30];
-
-  % This sets the input delay for each input (also known as the dead time or time delay). The first input has a delay of 0 time steps, while the second input has a delay of 1 time step. 
-  % This means the first input affects the output immediately, while the second input's effect on the output is delayed by one time step.                        
+  nb = [1 30];
   nk = [0 3];
-
-  % This line calls the arx function to estimate the ARX model parameters from the given data. 
-  % The function takes the data set data, which contains the time-series data of inputs and output, and the model orders [na,nb,nk], applying the options Opt. 
-  % The resulting model is stored in the variable arx10100.                                     
-  arx10100 = arx(data,[na,nb,nk], Opt);
-  
-  % Compare
-  compare(data,arx10100)
+  arx10100 = arx(de,[na,nb,nk], Opt);
+  compare(de,arx10100)
+  compare(dv,arx10100)
