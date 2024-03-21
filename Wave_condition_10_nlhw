@@ -3,7 +3,10 @@ Order:4 -> 54.22%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 % Details about Estimation Data                    
  % Import   data                                   
-                                                   
+
+de=data(1:22000);
+dv=data(22000:32950);
+
 % Estimation of Hammerstein-Wiener model           
                                                    
 % Define orders of linear block                    
@@ -31,8 +34,9 @@ initialModel = idnlhw([nb nf nk],inputNL,outputNL);
  Options.Display = 'on';                           
                                                    
 % Estimate Hammerstein-Wiener Model                
- nlhw1 = nlhw(data, initialModel, Options);
- compare(data, nlhw1)
+nlhw1 = nlhw(de, initialModel, Options);   
+compare(de, nlhw1)
+compare(dv, nlhw1)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Order:6 -> 63.19%
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
