@@ -68,7 +68,7 @@ Order:24 -> 68.87%
  Options.InitialState = 'zero';                                  
  Options.EnforceStability = true;                                
  Options.N4Weight = 'SSARX';  
- ss5 = n4sid(de, 24, 'Form', 'free', 'InputDelay', [0 3], Options)
+ ss5 = n4sid(de, 24, 'Form', 'free', 'InputDelay', [0 7], Options)
  compare(de,ss5)
  compare(dv,ss5)
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
