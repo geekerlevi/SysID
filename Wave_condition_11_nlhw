@@ -10,8 +10,8 @@ dv=data(22000:32950);
 % Estimation of Hammerstein-Wiener model           
                                                    
 % Define orders of linear block                    
-nb = [1 2];                                        
-nf = [0 0];                                        
+nb = [2 1];                                        
+nf = [1 1];                                        
 nk = [0 3];                                        
                                                    
 % Create Input Nonlinearity                        
